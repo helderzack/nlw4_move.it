@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Início | mvove.it</title>
+        <title>Início | move.it</title>
       </Head>
 
       <ExperienceBar/>
