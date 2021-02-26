@@ -7,6 +7,7 @@ import styles from '../styles/pages/Home.module.css';
 import { ChallengeBox } from "../components/ChallengeBox";
 
 import { CountdownProvider } from '../contexts/CountdownContext';
+import { Modal } from "../components/Modal";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
             <ChallengeBox/>
           </div>
         </section>
+        <Modal/>
       </CountdownProvider>
     </div>
 
