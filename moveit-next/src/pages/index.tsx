@@ -4,12 +4,15 @@ import { CompletedChallenges } from "../components/CompletedChallenges";
 import { Countdown } from "../components/Countdown";
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
+import Link from 'next/link';
+import { signOut, useSession } from 'next-auth/client';
 
 import styles from '../styles/pages/Home.module.css';
 import { ChallengeBox } from "../components/ChallengeBox";
 
 import { ChallengesProvider } from '../contexts/ChallengesContext';
 import { CountdownProvider } from '../contexts/CountdownContext';
+import { Login } from "../components/Login";
 
 interface HomeProps {
   level: number;
@@ -18,6 +21,8 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
+  const [ session, loading ] = useSession();
+
   return (
     <ChallengesProvider
     level={props.level}
@@ -28,20 +33,27 @@ export default function Home(props: HomeProps) {
           <title>Início | move.it</title>
         </Head>
 
-        <ExperienceBar/>
+        {!session && <>
+          <Login/>
+          </>}
 
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile/>
-              <CompletedChallenges/>
-              <Countdown/>
-            </div>
-            <div>
-              <ChallengeBox/>
-            </div>
-          </section>
-        </CountdownProvider>
+        {session && <>
+          <button type="button" onClick={() => signOut()}>Sair</button>
+          <Link href="/secret">To the secret Page</Link>
+          <ExperienceBar/>
+          <CountdownProvider>
+            <section>
+              <div>
+                <Profile/>
+                <CompletedChallenges/>
+                <Countdown/>
+              </div>
+              <div>
+                <ChallengeBox/>
+              </div>
+            </section>
+          </CountdownProvider>
+        </>}
       </div>
     </ChallengesProvider>
   )

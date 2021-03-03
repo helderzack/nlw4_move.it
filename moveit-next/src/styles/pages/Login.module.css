@@ -1,0 +1,47 @@
+.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('/logo-full.svg'), linear-gradient(#5965E0, #4953B8);
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.container div.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding-right: 20rem;
+    text-align: center;
+}
+
+.container div.contentContainer img {
+    filter: brightness(500%);
+}
+
+.container div.contentContainer span {
+    color: var(--white);
+}
+
+.container div.contentContainer button {
+    width: 100%;
+    height: 4rem;
+    background-image: linear-gradient(#63b849, #49b884);
+    border: none;
+}
+
+.container div.contentContainer button span {
+    color: black;
+}
+
+.container div.contentContainer button img {
+    height: 2rem;
+    object-fit: contain;
+}
